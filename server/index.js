@@ -1,13 +1,21 @@
 const express = require('express');
 let app = express();
-let seed = require('../db/index.js')
+let { retrieve, seeder } = require('./db/index.js')
 
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/', function (req, res) {
   console.log('Got request');
-  seed();
+  seeder();
   res.end();
 });
+
+app.get('/show', function (req, res) {
+  retrieve({}) 
+    .then(data => {
+      console.log('Getting all data: ', data);
+      res.json(data);
+    })
+})
 
 app.listen(3000, function() { console.log('connected to port 3000') });
