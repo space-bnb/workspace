@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 app.get('/show', function (req, res) {
   retrieve({}) 
     .then(data => {
-      console.log('Getting all data: ', data);
+      console.log('Getting all data: ', data.length);
       res.json(data);
     });
 });
