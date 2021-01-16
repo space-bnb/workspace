@@ -15,7 +15,6 @@ class App extends React.Component {
   }
 
   get() {
-    console.log(this)
     $.ajax({
       type: 'GET',
       url: '/show'

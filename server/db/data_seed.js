@@ -1,3 +1,4 @@
+// Template layout for display
 let option_templates = [
   {
     type: "Private Office",
@@ -34,6 +35,8 @@ let option_templates = [
   }
 ];
 
+// Creates 100 items with id, office_cap, desks_cap, membership_rate, pass_rate, and room_rate
+// Random values, different chances for each value to be 0
 let seed = () => {
   let workspaces = [];
   for (let id = 0; id < 100; id++) {
