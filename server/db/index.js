@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost/21027', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/41027', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const { seed } = require('./data_seed.js');
 
@@ -19,6 +19,10 @@ let retrieve = (filter) => {
   return Repo.find(filter, (err, docs) => err ? err : docs);
 }
 
+let remove = (filter) => {
+  return Repo.deleteMany(filter, (err) => err);
+}
+
 let seeder = () => {
   let w_seed = seed();
   for (let item of w_seed) {
@@ -34,3 +38,4 @@ let seeder = () => {
 
 module.exports.seeder = seeder;
 module.exports.retrieve = retrieve;
+module.exports.remove = remove;

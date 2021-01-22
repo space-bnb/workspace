@@ -17,15 +17,41 @@ class App extends React.Component {
   get() {
     $.ajax({
       type: 'GET',
-      url: '/show'
+      url: '/getall'
     }).then(repos => this.setState({ repos }));
+  }
+
+  getOne(item) {
+    $.ajax({
+      type: "POST",
+      url: '/get',
+      data: item
+    }).then(repo => this.setState({ repos: repo }))
+  }
+
+  remove(item) {
+    $.ajax({
+      type: "POST",
+      url: '/remove',
+      data: item
+    }).then(() => console.log("Removed item"))
+  }
+
+  seed() {
+    $.ajax({
+      type: "GET",
+      url: '/seed'
+    });
   }
 
   render() {
     return (
       <div key='main'>
-        <div key='repos'>REPOS:</div>
+        <div key='repos'>REPOS: {this.state.repos.length}</div>
         <button onClick={this.get.bind(this)}>Press me</button>
+        <button onClick={this.getOne.bind(this, { id: 4 })}>Get one item</button>
+        <button onClick={this.remove.bind(this, {})}>Clear</button>
+        <button onClick={this.seed.bind(this)}>Seed</button>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
