@@ -37,13 +37,6 @@ class App extends React.Component {
     }).then(() => console.log("Removed item"))
   }
 
-  seed() {
-    $.ajax({
-      type: "GET",
-      url: '/seed'
-    });
-  }
-
   render() {
     return (
       <div key='main'>
@@ -51,7 +44,6 @@ class App extends React.Component {
         <button onClick={this.get.bind(this)}>Press me</button>
         <button onClick={this.getOne.bind(this, { id: 4 })}>Get one item</button>
         <button onClick={this.remove.bind(this, {})}>Clear</button>
-        <button onClick={this.seed.bind(this)}>Seed</button>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
