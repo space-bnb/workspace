@@ -35,7 +35,12 @@ let seeder = () => {
     }
   }
 }
-remove({});
-seeder();
+
+let initializer = () => {
+  remove({})
+    .then(() => seeder())
+}
+
+initializer();
 
 module.exports.retrieve = retrieve;
