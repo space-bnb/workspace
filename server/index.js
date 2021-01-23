@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 let app = express();
 let bodyParser = require ('body-parser');
-let { retrieve, remove } = require('./db/index.js')
+let { retrieve } = require('./db/index.js')
 let port = 4000;
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -17,19 +17,13 @@ app.get('/buildings/:id', function (req, res) {
   res.sendFile(index, options);
 });
 
-app.post('/remove', function (req, res) {
-  console.log('Removing');
-  remove({})
-    .then(() => res.end())
+app.get('/workspace-api/get/:id', function (req, res) {
+  console.log('Getting ', req.params.id);
+  retrieve({ id: req.params.id })
+    .then(repo => res.json(repo[0]));
 })
 
-app.post('/get/:id', function (req, res) {
-  console.log('Getting ', id);
-  retrieve(id)
-    .then(repo => res.json(repo));
-})
-
-app.get('/getall', function (req, res) {
+app.get('/workspace-api/getall', function (req, res) {
   retrieve({}) 
     .then(data => {
       console.log('Getting all data: ', data.length);

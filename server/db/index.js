@@ -35,8 +35,7 @@ let seeder = () => {
     }
   }
 }
-
-seeder()
+remove({});
+seeder();
 
 module.exports.retrieve = retrieve;
-module.exports.remove = remove;

@@ -17,24 +17,18 @@ class App extends React.Component {
   get() {
     $.ajax({
       type: 'GET',
-      url: '/getall'
+      url: '/workspace-api/getall'
     }).then(repos => this.setState({ repos }));
   }
 
   getOne(item) {
     $.ajax({
-      type: "POST",
-      url: '/get',
-      data: item
-    }).then(repo => this.setState({ repos: repo }))
-  }
-
-  remove(item) {
-    $.ajax({
-      type: "POST",
-      url: '/remove',
-      data: item
-    }).then(() => console.log("Removed item"))
+      type: "GET",
+      url: `/workspace-api/get/${item.id}`,
+    }).then(repo => {
+      console.log(repo)
+      this.setState({ repos: repo })
+    })
   }
 
   render() {
@@ -43,7 +37,6 @@ class App extends React.Component {
         <div key='repos'>REPOS: {this.state.repos.length}</div>
         <button onClick={this.get.bind(this)}>Press me</button>
         <button onClick={this.getOne.bind(this, { id: 4 })}>Get one item</button>
-        <button onClick={this.remove.bind(this, {})}>Clear</button>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
