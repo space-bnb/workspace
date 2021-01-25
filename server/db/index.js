@@ -1,5 +1,6 @@
 const mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost/41027', { useNewUrlParser: true, useUnifiedTopology: true });
+require('dotenv').config()
+mongoose.connect(`mongodb://localhost/${process.env.DEV_DB}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const { seed } = require('./data_seed.js');
 
@@ -41,6 +42,5 @@ let initializer = () => {
     .then(() => seeder())
 }
 
-initializer();
-
+module.exports.initializer = initializer;
 module.exports.retrieve = retrieve;

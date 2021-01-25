@@ -12,19 +12,20 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = { repos: [] }
+    this.get()
   }
 
   get() {
     $.ajax({
       type: 'GET',
-      url: '/workspace-api/getall'
+      url: '/workspace-api/workspaces'
     }).then(repos => this.setState({ repos }));
   }
 
   getOne(item) {
     $.ajax({
       type: "GET",
-      url: `/workspace-api/get/${item.id}`,
+      url: `/workspace-api/workspace/${item.id}`,
     }).then(repo => {
       console.log(repo)
       this.setState({ repos: repo })
@@ -34,7 +35,7 @@ class App extends React.Component {
   render() {
     return (
       <div key='main'>
-        <div key='repos'>REPOS: {this.state.repos.length}</div>
+        <div key='repos' className='repos'>REPOS: {this.state.repos.length}</div>
         <button onClick={this.get.bind(this)}>Press me</button>
         <button onClick={this.getOne.bind(this, { id: 4 })}>Get one item</button>
         <Offices data={this.state.repos}/>
