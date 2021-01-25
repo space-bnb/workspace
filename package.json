@@ -12,7 +12,8 @@
     "react-dev": "webpack --watch",
     "server-dev": "nodemon server/index.js",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "debug-test": "jest -i --detectOpenHandles"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

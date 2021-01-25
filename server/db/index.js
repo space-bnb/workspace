@@ -39,7 +39,7 @@ let seeder = () => {
 
 let initializer = () => {
   remove({})
-    .then(() => seeder())
+    .then(() => seeder());
 }
 
 module.exports.initializer = initializer;
