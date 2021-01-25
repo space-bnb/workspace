@@ -12,32 +12,20 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = { repos: [] }
-    this.get()
   }
 
   get() {
     $.ajax({
       type: 'GET',
-      url: '/workspace-api/workspaces'
+      url: '/show'
     }).then(repos => this.setState({ repos }));
-  }
-
-  getOne(item) {
-    $.ajax({
-      type: "GET",
-      url: `/workspace-api/workspace/${item.id}`,
-    }).then(repo => {
-      console.log(repo)
-      this.setState({ repos: repo })
-    })
   }
 
   render() {
     return (
       <div key='main'>
-        <div key='repos' className='repos'>REPOS: {this.state.repos.length}</div>
+        <div key='repos'>REPOS:</div>
         <button onClick={this.get.bind(this)}>Press me</button>
-        <button onClick={this.getOne.bind(this, { id: 23 })}>Get one item</button>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
