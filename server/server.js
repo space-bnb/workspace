@@ -16,18 +16,17 @@ app.get('/buildings/:id', function (req, res) {
 });
 
 app.get('/workspace-api/workspace/:id', function (req, res) {
-  console.log('Getting ', req.params.id);
+  if (!req.params.id) { res.status(400).json("No ID given") }
   retrieve({ id: req.params.id })
     .then(repo =>  {
-      console.log("Got ", repo);
-      res.json(repo ? repo : []);
+      if (repo.length === 0) { res.status(400).json("ID not found") }
+      else { res.json(repo) }
     });
 })
 
 app.get('/workspace-api/workspaces', function (req, res) {
   retrieve({}) 
     .then(data => {
-      console.log('Getting all data: ', data.length);
       res.json(data);
     });
 });

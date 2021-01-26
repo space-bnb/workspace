@@ -12,6 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = { repos: [] }
+  }
+
+  componentDidMount() {
     this.get()
   }
 
@@ -26,10 +29,7 @@ class App extends React.Component {
     $.ajax({
       type: "GET",
       url: `/workspace-api/workspace/${item.id}`,
-    }).then(repo => {
-      console.log(repo)
-      this.setState({ repos: repo })
-    })
+    }).then(repo => this.setState({ repos: repo }));
   }
 
   render() {
