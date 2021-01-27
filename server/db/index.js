@@ -43,6 +43,4 @@ let initializer = () => {
 }
 
 module.exports.initializer = initializer;
-
-module.exports.seeder = seeder;
 module.exports.retrieve = retrieve;
