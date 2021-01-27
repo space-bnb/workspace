@@ -37,7 +37,7 @@ class App extends React.Component {
       <div key='main'>
         <div key='repos' className='repos'>REPOS: {this.state.repos.length}</div>
         <button onClick={this.get.bind(this)}>Press me</button>
-        <button onClick={this.getOne.bind(this, { id: 23 })}>Get one item</button>
+        <button onClick={this.getOne.bind(this, { id: 22 })}>Get one item</button>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
