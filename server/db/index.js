@@ -37,10 +37,15 @@ let seeder = () => {
   }
 }
 
-let initializer = () => {
+let initialize = () => {
   remove({})
     .then(() => seeder());
 }
 
-module.exports.initializer = initializer;
+let close = () => {
+  mongoose.connection.close();
+}
+
+module.exports.initialize = initialize;
 module.exports.retrieve = retrieve;
+module.exports.close = close;

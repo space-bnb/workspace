@@ -1,22 +1,32 @@
 const request = require ('supertest')
 const app = require ('../server/server');
+const { initialize, close } = require('../server/db/index.js')
+
+let server;
 
 describe('Post Endpoints', () => {
 
-  afterAll(done => {
-    app.close();
-    mongoose.connection.close();
+  beforeAll(async (done) => { 
+    server = await app.listen()
+    await initialize(); 
+    await new Promise(res => setTimeout(res, 1000)) // Timer to fix async issues with tests
+    done();
+  });
+  
+  afterAll(async (done) => {
+    await server.close();
+    await close();
     done();
   });
 
-  it('should receive all seeded records in array from /workspaces', async (done) => {
+  test('should receive all seeded records in array from /workspaces', async (done) => {
     const response = await request(app).get('/workspace-api/workspaces');
     expect(Array.isArray(response.body)).toEqual(true);
     expect(response.body.length).toEqual(100);
     done();
   });
 
-  it('should receive a single record in array from /workspace/:id', async (done) => {
+  test('should receive a single record in array from /workspace/:id', async (done) => {
     let id = 23;
     const response = await request(app).get(`/workspace-api/workspace/${id}`);
     expect(Array.isArray(response.body)).toEqual(true);
@@ -29,7 +39,7 @@ describe('Post Endpoints', () => {
     done();
   });
 
-  it('should return 404 if id not found for /workspace/:id', async (done) => {
+  test('should return 404 if id not found for /workspace/:id', async (done) => {
     let id = 50000;
     const response = await request(app).get(`/workspace-api/workspace/${id}`);
     expect(response.status).toEqual(400);
