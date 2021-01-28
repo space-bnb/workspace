@@ -29,7 +29,10 @@ class App extends React.Component {
     $.ajax({
       type: "GET",
       url: `/workspace-api/workspace/${item.id}`,
-    }).then(repo => this.setState({ repos: repo }));
+    }).then(repo => {
+      console.log(repo)
+      this.setState({ repos: repo })
+    });
   }
 
   render() {
