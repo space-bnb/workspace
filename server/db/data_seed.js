@@ -39,7 +39,7 @@ let option_templates = [
 // Random values, different chances for each value to be 0
 let seed = () => {
   let workspaces = [];
-  for (let id = 0; id < 100; id++) {
+  for (let id = 1; id <= 100; id++) {
     let item = {};
     let rand = Math.random();
     item.id = id;
