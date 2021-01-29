@@ -1,5 +1,5 @@
 const server = require('./server.js');
-let { initialize } = require('./db/index.js')
+const { initialize } = require('./db/index.js')
 require('dotenv').config()
 
 if (process.env.NODE_ENV !== 'test') {

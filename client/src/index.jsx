@@ -22,7 +22,10 @@ class App extends React.Component {
     $.ajax({
       type: 'GET',
       url: '/workspace-api/workspaces'
-    }).then(repos => this.setState({ repos }));
+    }).then(repos => {
+      console.log(repos)
+      this.setState({ repos });
+    });
   }
 
   getOne(item) {
@@ -37,13 +40,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div key='main'>
-        <div key='repos' className='repos'>REPOS: {this.state.repos.length}</div>
-        <button onClick={this.get.bind(this)}>Press me</button>
-        <button onClick={this.getOne.bind(this, { id: 22 })}>Get one item</button>
+      <div className="workspace-body" key='main'>
+        <h2><b>Available workspace</b></h2>
+        <h4>MONTHLY SUBSCRIPTION</h4>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
+        <h4>PAY-AS-YOU-GO</h4>
         <Pass data={this.state.repos}/>
         <Rooms data={this.state.repos}/>
       </div>
