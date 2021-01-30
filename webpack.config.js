@@ -13,11 +13,29 @@ module.exports = {
     rules: [
       {
         test : /\.jsx?/,
-        include : SRC_DIR,
-        loader : 'babel-loader',
+        exclude: /node_modules/,
+        loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-react']
-       }
+        }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+            loader: "file-loader",
+            options: {
+              name: '[name].[ext]'
+            }
+        }]
       }
     ],
   }

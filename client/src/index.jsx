@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import './style.scss';
 
 import Offices from './components/Offices.jsx';
 import Desks from './components/Desks.jsx';
