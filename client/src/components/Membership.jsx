@@ -1,10 +1,11 @@
 import React from 'react';
+import image from '../images/HotDesk.png'
 
 const Membership = (props) => {
   let membership_rate = props.data.length > 0 ? props.data[0].membership_rate : 0;
   return (
   <div className="container" id="membership">
-    <div className="image">IMG</div>
+    <img src={image} alt="Image" width="100" height="100" />
     <div className="description">
       <div>Hot Desk Membership</div>
       <div>On-demand access to shared workspaces and common areas</div>

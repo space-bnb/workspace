@@ -48,6 +48,7 @@ table {
 .workspace-body {
   display: flexbox;
   flex-direction: column;
+  margin: 2px;
 }
 
 .description {
@@ -63,10 +64,6 @@ table {
   flex-basis: 15%;
 }
 
-p {
-  margin: 3px;
-}
-
 .container {
   display: flex;
   flex-direction: row;
@@ -78,4 +75,14 @@ p {
   border-style: solid;
   border-radius: 3px;
   min-height: 80px;
+}
+
+.main-title {
+  font-size: 24px;
+  padding: 6px;
+}
+
+.category {
+  font-size: 18px;
+  padding: 3px;
 }

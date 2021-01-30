@@ -42,12 +42,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="workspace-body" key='main'>
-        <h2><b>Available workspace</b></h2>
-        <h4>MONTHLY SUBSCRIPTION</h4>
+        <div className="main-title"><b>Available workspace</b></div>
+        <div className="category">MONTHLY SUBSCRIPTION</div>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
-        <h4>PAY-AS-YOU-GO</h4>
+        <div className="category">PAY-AS-YOU-GO</div>
         <Pass data={this.state.repos}/>
         <Rooms data={this.state.repos}/>
       </div>
