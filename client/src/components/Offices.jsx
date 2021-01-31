@@ -1,15 +1,16 @@
 import React from 'react';
+import image from '../images/PrivateOffice.png'
 
 const Offices = (props) => {
   let office_cap = props.data.length > 0 ? props.data[0].office_cap : 0;
   return (
-  <div className="workspace offices" id="offices">
-    <div>IMG</div>
-    <div>
-      <div>Private Offices</div>
-      <div>Lockable office space for teams of all sizes</div>
+  <div className="container" id="offices">
+    <img src={image} alt="Image" width="100" height="100" />
+    <div className="description">
+      <p><b>Private Offices</b></p>
+      <p>Lockable office space for teams of all sizes</p>
     </div>
-    <div>View Inventory {office_cap}</div>
+    <div className="rate">{office_cap > 0 ? "View Inventory" : "None"}</div>
   </div>
 )};
 

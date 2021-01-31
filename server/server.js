@@ -1,13 +1,15 @@
 const express = require('express');
-let app = express();
-let bodyParser = require ('body-parser');
-let { retrieve } = require('./db/index.js')
+const app = express();
+const bodyParser = require ('body-parser');
+const cors = require('cors');
+const { retrieve } = require('./db/index.js')
 require('dotenv').config()
 
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 app.get('/workspace-api/workspace/:id', function (req, res) {
   if (!req.params.id) { res.status(400).json("No ID given") }

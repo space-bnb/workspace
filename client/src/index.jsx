@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import './style.scss';
 
 import Offices from './components/Offices.jsx';
 import Desks from './components/Desks.jsx';
@@ -22,7 +23,10 @@ class App extends React.Component {
     $.ajax({
       type: 'GET',
       url: '/workspace-api/workspaces'
-    }).then(repos => this.setState({ repos }));
+    }).then(repos => {
+      console.log(repos)
+      this.setState({ repos });
+    });
   }
 
   getOne(item) {
@@ -37,13 +41,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div key='main'>
-        <div key='repos' className='repos'>REPOS: {this.state.repos.length}</div>
-        <button onClick={this.get.bind(this)}>Press me</button>
-        <button onClick={this.getOne.bind(this, { id: 22 })}>Get one item</button>
+      <div className="workspace-body" key='main'>
+        <div className="main-title"><b>Available workspace</b></div>
+        <div className="category">MONTHLY SUBSCRIPTION</div>
         <Offices data={this.state.repos}/>
         <Desks data={this.state.repos}/>
         <Membership data={this.state.repos}/>
+        <div className="category">PAY-AS-YOU-GO</div>
         <Pass data={this.state.repos}/>
         <Rooms data={this.state.repos}/>
       </div>
