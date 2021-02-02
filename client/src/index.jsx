@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import axios from 'axios';
+
 import './style.scss';
 
 import Offices from './components/Offices.jsx';
@@ -12,31 +13,17 @@ import Rooms from './components/Rooms.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { repos: [] }
+    this.state = { data: {} }
   }
 
   componentDidMount() {
-    this.get()
+    let testId = 1;
+    this.get(testId);
   }
 
-  get() {
-    $.ajax({
-      type: 'GET',
-      url: '/workspace-api/workspaces'
-    }).then(repos => {
-      console.log(repos)
-      this.setState({ repos });
-    });
-  }
-
-  getOne(item) {
-    $.ajax({
-      type: "GET",
-      url: `/workspace-api/workspace/${item.id}`,
-    }).then(repo => {
-      console.log(repo)
-      this.setState({ repos: repo })
-    });
+  async get(id) {
+    let { data } = await axios.get(`/workspace-api/workspace/${id}`);
+    this.setState(data.length ? { data: data[0] } : {});
   }
 
   render() {
@@ -44,12 +31,12 @@ class App extends React.Component {
       <div className="workspace-body" key='main'>
         <div className="main-title"><b>Available workspace</b></div>
         <div className="category">MONTHLY SUBSCRIPTION</div>
-        <Offices data={this.state.repos}/>
-        <Desks data={this.state.repos}/>
-        <Membership data={this.state.repos}/>
+        <Offices data={this.state.data}/>
+        <Desks data={this.state.data}/>
+        <Membership data={this.state.data}/>
         <div className="category">PAY-AS-YOU-GO</div>
-        <Pass data={this.state.repos}/>
-        <Rooms data={this.state.repos}/>
+        <Pass data={this.state.data}/>
+        <Rooms data={this.state.data}/>
       </div>
     )
   }

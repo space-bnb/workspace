@@ -2,7 +2,7 @@ import React from 'react';
 import image from '../images/PrivateOffice.png'
 
 const Offices = (props) => {
-  let office_cap = props.data.length > 0 ? props.data[0].office_cap : 0;
+  let office_cap = props.data.office_cap || 0;
   return (
   <div className="container" id="offices">
     <img src={image} alt="Image" width="100" height="100" />

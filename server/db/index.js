@@ -1,6 +1,7 @@
 const mongoose = require ('mongoose');
 require('dotenv').config()
-mongoose.connect(`mongodb://localhost/${process.env.DEV_DB}`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb://localhost/${process.env.DEV_DB}`, 
+                  { useNewUrlParser: true, useUnifiedTopology: true });
 
 const { seed } = require('./data_seed.js');
 

@@ -2,7 +2,7 @@ import React from 'react';
 import image from '../images/DayPass.png'
 
 const Pass = (props) => {
-  let pass_rate = props.data.length > 0 ? props.data[0].pass_rate : 0;
+  let pass_rate = props.data.pass_rate || 0;
   return (
   <div className="container" id="pass">
     <img src={image} alt="Image" width="100" height="100" />
