@@ -2,7 +2,7 @@ import React from 'react';
 import image from '../images/ConferenceRoom.png'
 
 const Rooms = (props) => {
-  let room_rate = props.data.length > 0 ? props.data[0].room_rate : 0;
+  let room_rate = props.data.room_rate || 0;
   return (
   <div className="container" id="room">
     <img src={image} alt="Image" width="100" height="100" />

@@ -2,7 +2,7 @@ import React from 'react';
 import image from '../images/DedicatedDesk.png'
 
 const Desks = (props) => {
-  let desks_cap = props.data.length > 0 ? props.data[0].desks_cap : "";
+  let desks_cap = props.data.desks_cap || 0;
   return (
   <div className="container" id="desks">
     <img src={image} alt="Image" width="100" height="100" />
