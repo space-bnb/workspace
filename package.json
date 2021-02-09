@@ -9,7 +9,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-dev": "webpack --watch -mode development",
+    "react-dev": "webpack --watch",
     "server": "nodemon server/index.js",
     "build": "webpack --config webpack.config.js",
     "test": "jest"
@@ -25,6 +25,7 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.12",
     "react": "^17.0.1",
+    "react-modal": "^3.12.1",
     "style-loader": "^2.0.0"
   },
   "devDependencies": {
