@@ -23,7 +23,9 @@ class Persons extends React.Component {
   }
    
   setPersons(personsCount) {
-    this.setState({ personsCount, show: false });
+    if (!isNaN(personsCount)) {
+      this.setState({ personsCount, show: false });
+    }
   }
 
   clearPersons() {
@@ -35,7 +37,7 @@ class Persons extends React.Component {
     if (this.state.show) {
       content = (
       <PersonsContent 
-        count={this.state.personsCount} 
+        count={this.state.personsCount}
         setPersons={this.setPersons.bind(this)}
         clear={this.clearPersons.bind(this)}
       />)
@@ -44,7 +46,11 @@ class Persons extends React.Component {
     }
     return (
       <div className="persons-container">
-        <button className="persons-button" onClick={this.handleOpen.bind(this)}>
+        <button 
+          className="persons-button" 
+          onClick={this.handleOpen.bind(this)}
+          style={this.state.personsCount > 0 ? { "backgroundColor": "blue", "color": "white"} : {}}
+        >
           {this.state.personsCount > 0 ? this.state.personsCount : "Capacity"}
         </button>
         {content}

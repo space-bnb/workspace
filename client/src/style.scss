@@ -45,6 +45,11 @@ table {
 
 /* Local CSS */
 
+h5 {
+  font-size: 16px;
+  margin-left: 3px;
+}
+
 .workspace-body {
   display: flexbox;
   flex-direction: column;
@@ -88,9 +93,10 @@ table {
   padding: 3px;
 }
 
-
 .persons-container {
- position: relative;
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
 }
 
 .persons-modal {
@@ -99,12 +105,13 @@ table {
   overflow: auto;
   background-color: white;
   position: absolute;
+  padding: 10px;
 }
 
 button {
   all: unset;
   display: block;
-  width: 60px;
+  min-width: 20px;
   height: 18px;
   padding: 5px;
   border-radius: 18px;
@@ -114,6 +121,19 @@ button {
   text-align: center;
   margin: auto;
   font-size: 15px;
+}
+
+#persons-button {
+  margin: 3px;
+}
+
+#clear-persons-modal {
+  margin-top: 10px;
+}
+
+.persons-button {
+  position: relative;
+  right: 265px;
 }
 
 .persons-button:hover {
@@ -126,4 +146,14 @@ button {
   border-width: 1px;
   border-style: solid;
   background-color: lightgray;
+  margin: 3px;
+  margin-bottom: 14px;
+}
+
+.persons-modal-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
 }
