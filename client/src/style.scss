@@ -88,9 +88,42 @@ table {
   padding: 3px;
 }
 
-.persons-modal {
-  height: 10%;
-  width: 10%;
 
+.persons-container {
+ position: relative;
+}
+
+.persons-modal {
+  height: 350px;
+  width: 300px;
   overflow: auto;
+  background-color: white;
+  position: absolute;
+}
+
+.persons-button {
+  all: unset;
+  display: block;
+  width: 60px;
+  height: 18px;
+  padding: 5px;
+  border-radius: 18px;
+  border-color: rgb(161, 161, 161);
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+  margin: auto;
+  font-size: 15px;
+}
+
+.persons-button:hover {
+  background-color: lightgray;
+}
+
+.persons-modal-info {
+  border: 1px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  background-color: lightgray;
 }
