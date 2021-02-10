@@ -36,7 +36,6 @@ class Persons extends React.Component {
       content = (
       <PersonsContent 
         count={this.state.personsCount} 
-        show={this.state.show}
         setPersons={this.setPersons.bind(this)}
         clear={this.clearPersons.bind(this)}
       />)
@@ -45,7 +44,9 @@ class Persons extends React.Component {
     }
     return (
       <div className="persons-container">
-        <button className="persons-button" onClick={this.handleOpen.bind(this)}>Capacity</button>
+        <button className="persons-button" onClick={this.handleOpen.bind(this)}>
+          {this.state.personsCount > 0 ? this.state.personsCount : "Capacity"}
+        </button>
         {content}
       </div>
     )
