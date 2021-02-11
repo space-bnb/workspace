@@ -25,7 +25,9 @@ class App extends React.Component {
 
   async get(id) {
     let { data } = await axios.get(`/workspace-api/workspace/${id}`);
-    this.setState(data.length ? { data: data[0] } : {});
+    if (data.length) { 
+      this.setState({ data: data[0] });
+    };
   }
 
   render() {

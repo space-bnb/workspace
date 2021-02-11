@@ -14,22 +14,15 @@ class Persons extends React.Component {
     };
   }
 
-  handleOpen() {
-    this.setState({ show: true });
+  handleShowChange() {
+    const show = !this.state.show;
+    this.setState({ show });
   }
 
-  handleClose() {
-    this.setState({ show: false });
-  }
-   
-  setPersons(personsCount) {
+  setPersonCount(personsCount) {
     if (!isNaN(personsCount)) {
       this.setState({ personsCount, show: false });
     }
-  }
-
-  clearPersons() {
-    this.setPersons(0);
   }
 
   render() {
@@ -38,8 +31,7 @@ class Persons extends React.Component {
       content = (
       <PersonsContent 
         count={this.state.personsCount}
-        setPersons={this.setPersons.bind(this)}
-        clear={this.clearPersons.bind(this)}
+        setPersonCount={this.setPersonCount.bind(this)}
       />)
     } else {
       content = null;
@@ -48,7 +40,7 @@ class Persons extends React.Component {
       <div className="persons-container">
         <button 
           className="persons-button" 
-          onClick={this.handleOpen.bind(this)}
+          onClick={this.handleShowChange.bind(this)}
           style={this.state.personsCount > 0 ? { "backgroundColor": "blue", "color": "white"} : {}}
         >
           {this.state.personsCount > 0 ? this.state.personsCount : "Capacity"}
