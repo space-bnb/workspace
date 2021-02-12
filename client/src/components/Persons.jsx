@@ -1,9 +1,5 @@
 import React from 'react';
-import Modal from 'react-modal';
-
 import PersonsContent from './PersonsContent.jsx';
-
-Modal.setAppElement(document.getElementById('workspaces'));
  
 class Persons extends React.Component {
   constructor(props) {
@@ -26,15 +22,12 @@ class Persons extends React.Component {
   }
 
   render() {
-    let content;
+    let content = null;
+    let count = this.state.personsCount;
     if (this.state.show) {
       content = (
-      <PersonsContent 
-        count={this.state.personsCount}
-        setPersonCount={this.setPersonCount.bind(this)}
-      />)
-    } else {
-      content = null;
+      <PersonsContent count={count} setPersonCount={this.setPersonCount.bind(this)} />
+      )
     }
     return (
       <div className="persons-container">
