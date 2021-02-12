@@ -3,7 +3,8 @@ const app = express();
 const cors = require('cors');
 const { retrieve } = require('./db/index.js')
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use('/buildings/:workspaceId', express.static(__dirname + '/../client/dist'));
+app.use('/', express.static(__dirname + '/../client/dist'));
 app.use(cors());
 
 app.get('/workspace-api/workspace/:id?', function(req, res) {
