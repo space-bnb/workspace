@@ -5,7 +5,7 @@ const generateMonth = (date) => {
   let month = date.getMonth();
   let current = new Date(date.getFullYear(), month, 1);
   while (current.getMonth() === month) {
-    totalDates.push(current);
+    totalDates.push(new Date(current));
     current.setDate(current.getDate() + 1);
   }
   return totalDates;
@@ -33,7 +33,7 @@ const MoveInContent = (props) => {
               style={date.toDateString() === day.toDateString() ? 
                 { "backgroundColor": "blue", "color": "white"} : {}}
             >
-              {day.getDay()}
+              {day.getDate()}
             </button>
           })
           }

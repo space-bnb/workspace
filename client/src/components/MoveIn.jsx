@@ -27,10 +27,9 @@ class MoveIn extends React.Component {
     let content = null;
     if (this.state.show) {
       content = (
-      <MoveInContent date={date} setDate={this.setDate.bind(this)} />
+      <MoveInContent date={this.state.date} setDate={this.setDate.bind(this)} />
       )
     }
-    let date = this.state.date.toString();
     return (
       <div className="date-container">
         <button 
@@ -38,7 +37,9 @@ class MoveIn extends React.Component {
           onClick={this.handleShowChange.bind(this)}
           style={this.state.date ? { "backgroundColor": "blue", "color": "white"} : {}}
         >
-          {this.state.date ? `${date.split(' ')[1]} ${date.split(' ')[2]}` : "Move-in"}
+          {this.state.date ? 
+            `${this.state.date.toDateString().split(' ')[1]} ${this.state.date.toDateString().split(' ')[2]}` : 
+            "Move-in"}
         </button>
         {content}
       </div>
