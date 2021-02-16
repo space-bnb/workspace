@@ -93,13 +93,13 @@ h5 {
   padding: 3px;
 }
 
-.persons-container {
+.persons-container, .date-container {
   display: flex;
   position: relative;
   justify-content: flex-start;
 }
 
-.persons-modal {
+.persons-modal, .movein-modal {
   height: 350px;
   width: 300px;
   overflow: auto;
@@ -123,7 +123,7 @@ button {
   font-size: 15px;
 }
 
-#persons-button {
+#persons-button, #movein-button {
   margin: 3px;
 }
 
@@ -131,12 +131,12 @@ button {
   margin-top: 10px;
 }
 
-.persons-button {
+.persons-button, .date-button {
   position: relative;
   right: 265px;
 }
 
-.persons-button:hover {
+.persons-button:hover, .date-button:hover {
   background-color: lightgray;
 }
 
@@ -150,7 +150,7 @@ button {
   margin-bottom: 14px;
 }
 
-.persons-modal-content {
+.persons-modal-content, .movein-modal-content {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

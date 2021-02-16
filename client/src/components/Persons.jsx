@@ -6,8 +6,9 @@ class Persons extends React.Component {
     super(props);
     this.state = {
       show: false,
-      personsCount: 0
+      count: props.count || 0
     };
+    this.set = props.set;
   }
 
   handleShowChange() {
@@ -15,18 +16,22 @@ class Persons extends React.Component {
     this.setState({ show });
   }
 
-  setPersonCount(personsCount) {
-    if (!isNaN(personsCount)) {
-      this.setState({ personsCount, show: false });
+  setPersonCount(count) {
+    if (!isNaN(count)) {
+      this.setState({ count, show: false });
+      this.set(count);
     }
   }
 
   render() {
     let content = null;
-    let count = this.state.personsCount;
+    let count = this.state.count;
     if (this.state.show) {
       content = (
-      <PersonsContent count={count} setPersonCount={this.setPersonCount.bind(this)} />
+      <PersonsContent 
+        count={count} 
+        setPersonCount={this.setPersonCount.bind(this)} 
+      />
       )
     }
     return (
@@ -34,9 +39,9 @@ class Persons extends React.Component {
         <button 
           className="persons-button" 
           onClick={this.handleShowChange.bind(this)}
-          style={this.state.personsCount > 0 ? { "backgroundColor": "blue", "color": "white"} : {}}
+          style={count ? { "backgroundColor": "blue", "color": "white"} : {}}
         >
-          {this.state.personsCount > 0 ? this.state.personsCount : "Capacity"}
+          {count ? count : "Capacity"}
         </button>
         {content}
       </div>
