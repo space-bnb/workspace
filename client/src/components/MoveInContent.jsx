@@ -11,12 +11,6 @@ const generateMonth = (date) => {
   return totalDates;
 }
 
-const modifyDay = (date, days) => {
-  let result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
-}
-
 const MoveInContent = (props) => {
   const date = props.date;
   const month = generateMonth(date);
