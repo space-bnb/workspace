@@ -88,7 +88,6 @@ button {
 
 .persons-button, .date-button {
   position: relative;
-  right: 25px;
 }
 
 .persons-button:hover, .date-button:hover {
@@ -111,4 +110,9 @@ button {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: flex-start;
 }
